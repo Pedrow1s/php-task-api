@@ -7,6 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controller\TaskController;
 use App\Model\Task;
 use App\Service\TaskService;
+use App\Router\Router;
 
 $service = new TaskService();
 
@@ -31,5 +32,10 @@ $service->adicionar(
 );
 
 $controller = new TaskController($service);
+$router = new Router();
+
+$router->get('/tasks', fn() => $controller->listar());
+
+
 
 $controller->listar();
