@@ -7,7 +7,7 @@ namespace App\Model;
 class Task
 {
     public function __construct(
-        public int $id,
+        public ?int $id,
         public string $titulo,
         public string $descricao,
         public bool $concluida,

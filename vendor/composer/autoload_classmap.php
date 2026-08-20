@@ -6,7 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Model\\Task' => $baseDir . '/src/Model/Task.php',
-    'App\\Service\\TaskService' => $baseDir . '/src/Service/TaskService.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

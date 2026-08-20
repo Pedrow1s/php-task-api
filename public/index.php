@@ -6,14 +6,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controller\TaskController;
 use App\Model\Task;
-use App\Service\TaskService;
 use App\Router\Router;
+use App\Service\TaskService;
 
 $service = new TaskService();
 
 $service->adicionar(
     new Task(
-        1,
+        null,
         'Estudar PHP',
         'Aprender PHP moderno',
         false,
@@ -23,7 +23,7 @@ $service->adicionar(
 
 $service->adicionar(
     new Task(
-        2,
+        null,
         'Estudar Composer',
         'Aprender autoload e PSR-4',
         false,
@@ -32,10 +32,37 @@ $service->adicionar(
 );
 
 $controller = new TaskController($service);
+
 $router = new Router();
 
-$router->get('/tasks', fn() => $controller->listar());
+$router->get(
+    '/',
+    fn() => $controller->inicio()
+);
 
+$router->get(
+    '/tasks',
+    fn() => $controller->listar()
+);
 
+$router->get(
+    '/tasks/{id}',
+    fn(string $id) => $controller->buscarPorId((int) $id)
+);
 
-$controller->listar();
+$router->post(
+    '/tasks',
+    fn() => $controller->criar()
+);
+
+$router->put(
+    '/tasks/{id}',
+    fn(string $id) => $controller->atualizar((int) $id)
+);
+
+$router->delete(
+    '/tasks/{id}',
+    fn(string $id) => $controller->excluir((int) $id)
+);
+
+$router->dispatch();

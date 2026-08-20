@@ -21,8 +21,6 @@ class ComposerStaticInit3d6ce7f67cb00a1f30fe29e07a751a8b
     );
 
     public static $classMap = array (
-        'App\\Model\\Task' => __DIR__ . '/../..' . '/src/Model/Task.php',
-        'App\\Service\\TaskService' => __DIR__ . '/../..' . '/src/Service/TaskService.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
